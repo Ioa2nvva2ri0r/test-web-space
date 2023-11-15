@@ -1,0 +1,14 @@
+@mixin positioning($top: none, $left: none, $bottom: none, $right: none) {
+  @if $top != none {
+    top: $top;
+  }
+  @if $left != none {
+    left: $left;
+  }
+  @if $bottom != none {
+    bottom: $bottom;
+  }
+  @if $right != none {
+    right: $right;
+  }
+}

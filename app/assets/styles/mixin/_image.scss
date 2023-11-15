@@ -1,0 +1,8 @@
+@import './block';
+
+@mixin img($width: none, $height: auto) {
+  object-fit: cover;
+  object-position: center;
+  vertical-align: bottom;
+  @include block($width, $height);
+}

@@ -1,0 +1,168 @@
+@import "../../app/assets/styles/mixin";
+
+.form {
+  position: absolute;
+  top: s(86);
+  right: s(340);
+  z-index: 50;
+  width: 100%;
+  max-width: s(600);
+  padding: s(38) s(105) s(40) s(44);
+  background-color: var(--white);
+  &__title {
+    margin-bottom: s(51);
+    font-size: s(40);
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.4);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: s(24);
+    padding-bottom: s(3);
+  }
+  &__label {
+    &_input {
+      display: block;
+      width: 100%;
+      & span {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+    }
+    &_checkbox {
+      position: relative;
+      cursor: pointer;
+      @include flex-50-y;
+      gap: s(20);
+      & [id="error-valid"] {
+        position: absolute;
+        width: 100%;
+        top: -15%;
+      }
+    }
+  }
+  &__input {
+    cursor: pointer;
+    width: 100%;
+    padding: s(13.5) s(20) s(13) s(41);
+    background-color: var(--grey-light);
+    outline: s(1.5) solid transparent;
+    @include transition(outline-color);
+    &:focus,
+    &:hover,
+    &:active {
+      outline-color: #000513;
+    }
+  }
+  &__input,
+  &__input::placeholder,
+  &__checkbox_desc {
+    font-size: s(17);
+    font-weight: 400;
+    line-height: 140%;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  &__checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    @include block(0);
+    & + span {
+      position: relative;
+      top: s(2);
+      display: block;
+      @include block(s(56));
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA5CAYAAABj2ui7AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAPmSURBVHgB7VlLT1NBFJ6+obePq4QFUQkhJiZufNSVK3b8AnZu3PADcAMrWBDY8x9csfUHsDeQEBckxoiPkEabVKC3Rfr0+64zpCqSO6UzNXG+ZDrnzp3bM9+cM2deQjg4ODg4OPwVMfEPodfrxZaWlsaKxaKXTCa9eDw+HovFvG63W8DrdBAEe5ubmxWd/9QiuLW1lanVaj4UU2mWyhOJRAFyDo3LocoYyijnIXuQs8hZPs5nJD7HSQRI8RvWR1kGKS/fJ65o18uVlZVnQgPJqBU3NjYm6vX6G5Cb4jPysBzkwhwNvajbL18G9f6SemTeQF4H+TPmMqWRHiBNCk1EJgjFN5BNyUZ8QAMCyAHkU5Csg3CAsgYTy/FcY+M6nc455LAX8K6jCPA7WD9gOgOQN3Z3d4Pt7W3W7fXrXl9ff4L3r/H9TaGJyAQlCYrl5eXlWWERqVSqRk9Bp+Q1PxXxqBVbrRYtQisUhGVAdyBFT2giMsHV1VWOhSYDy+LiYkpYRKFQqEnRnAVBjOOCimIzMzNWrVitVjnWOxBzCwsLCZ1vIxOUCF0lnU7nhEWsra11ZVBLlEolLd26BENXabfbVgkSIBjq1g00ugRP+YOI5gv7CL2n2WxqBRpdgk3+YG6bEJYBy4UWxPAwZ0EZaATWidrR7LqAi1aZw3u0JnstglBSl6L2fDQEnMg2aEXwgYLMKCZ7rKJU55pzUS7XpLKssIy+KGouyHCBLJWNYh+pVjNFoQFdgsfMEUUjL9KHiJZsg7kxCMuFAx1R1PpEr4BhYtSCp4MoGQbQueeyDUYn+pFNE6pzheEoeiyVWV+qQTdPAoQ8+4kMLYKYHqpSifbRwXWhLIjc3HYJuwilxPpEryI4OtccQR4sSdH6GFTDQ1e3FsG+cxnrURSdq7zH6IaXA73FUI1dttXJXi0ThUkL8uhA/Nz0xrAvs2pF3/fVUs3oboIIx+EgZ5TXQaVSofe0kXJzc3ORvWcQNwt7EuPxF1eBdbOw6jTE+xijU+iAaYybScgT7Ay4WJwhHs9ZpVeelJ2hrCU30yTwBWvdQ3z7DvJbHFHs478b9B5cH/B0zZ+fn8/v7Ox8i9LYQQiG0Qzr0Re46eH3s2jgHSi+LaRHqDsHlF/kV9xH/FGGY/oLOZPJdKFnH+JR3//Te4wRrEglz39rINeKH5EO2BiQ+oz0Vd5LnMuF+gnqfoc1OyDRwztalBcrvH3KQ/blrdMtPN9Dugv5IfJHMoXgzZaIiEEIvpLXXgdIR0jvcXeyh/JPcKO2GDLwn2nP80pw1afQ9ZgRvFwuHwoHBwcHBwcHBwcHBwcHh/8ZPwBKj6M353uzBQAAAABJRU5ErkJggg==");
+      @include transition(transform, scale(1));
+      &,
+      &::after {
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      &::after {
+        position: absolute;
+        @include block(100%);
+        content: "";
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH1SURBVHgB7ZjLi45hGIcvSSNFSbEgZuRQLNBsFWWKjYWyYGdhJSsLh8KCpChlZCmfBUX5CyyULFhIsyKFSeRQiiRymJnf3f1Mz2amOX/zfffcV131Hd736f31PO/9HOYTgxXyglwpnxOMHvlZDso+gnEOD2Y+lJ0EYZHspYY7RSCWyAYe7Ic8QCAWy9t4uE9yG8G4hYf7IDcQjGt4OKuYGwnGSTzcL7mTYByU//GAhwlGJ3USP0EwOuRrPNw9AnIFD/dGriIY+/Bwf+UmgrFa9hP0vTNu4uGeynkEYw8e7qdcSzCsavbjAY8RkPPUqhluaHbJATxgN03kiXwhL8v1zBx38HANmsxb6q55ePgclcuZPrpL29aDTZ/QF8rteOn+Qg36Td6Qa5g6z0qbF5llrMrtlQ+oQf/gw2qyQXeXdj7iu/WWYTPeg8NBv8pLcgETo6/cf5wWxSbjBjWovbP7x3lvD/X4oYMWZ4d8SQ1qvbtsjHsel2vP0CbY8LTF8T/8wW0vt26Ua3dRe3wpbYaFeoUH+C2PjHBNo/zfS5tivXmVOmTPUpdfXeW370zPNDOrnMZ3BhbIjv3syP16+X6XINjcadOIhbov35fPWwnEFupWyHxEQGxx8A4PeIigWIW1qhpuv5ckSZIkSZIkSZIkSZLMIYYAXQ2C2ierNxwAAAAASUVORK5CYII=");
+        opacity: 0;
+        @include transitions((transform, opacity));
+      }
+    }
+    &:checked + span::after {
+      opacity: 1;
+    }
+    &:hover:not(:checked) + span,
+    &:focus:not(:checked) + span,
+    &:active:not(:checked) + span {
+      transform: scale(1.2);
+    }
+    &:hover:checked + span::after,
+    &:focus:checked + span::after,
+    &:active:checked + span::after {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    &_box {
+      position: static !important;
+    }
+  }
+  &__btn {
+    position: absolute;
+    visibility: visible;
+    opacity: 1;
+    right: s(-80);
+    bottom: s(-36);
+    padding: s(17) s(96) s(17) s(127);
+    font-size: s(21);
+    font-weight: 300;
+    line-height: 200%;
+    color: var(--white);
+    background-color: #000513;
+    box-shadow: 0 s(4) s(4) 0 rgba(0, 0, 0, 0.25);
+    @include transitions((color, background-color, opacity, visibility));
+    & > span {
+      display: inline-block;
+      position: relative;
+      top: s(-3);
+      left: s(-4);
+      font-size: s(15);
+      padding-left: s(7);
+      will-change: transform;
+      @include transition(transform, translateX(0) scale(1));
+    }
+    &:hover > span {
+      transform: scale(1.5) translateX(5%);
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      color: #000513;
+      background-color: var(--grey-light);
+    }
+    &:disabled {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  &__message {
+    position: absolute;
+    text-align: center;
+    @include flex-50-50;
+    padding: s(10);
+    top: 0;
+    left: 0;
+    @include block(100%);
+    font-size: s(21);
+    font-family: 700;
+    color: var(--grey-light);
+    background-color: var(--white);
+  }
+  @include mobile {
+    right: s-md(50);
+  }
+}

@@ -1,0 +1,69 @@
+@import "../../app/assets/styles/mixin";
+
+.container {
+  padding: s(136) s(384);
+  @include mobile {
+    padding: s-md(80) s-md(10);
+  }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: s(48);
+  font-size: s(52);
+  font-weight: 700;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(s(283), 1fr));
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(s-md(150), 1fr));
+  }
+}
+
+.item {
+  position: relative;
+  height: s(288);
+  & > img {
+    height: 100%;
+  }
+  & > p {
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    @include block(100%);
+    padding: s(131) s(70) s(69) s(67.5);
+    font-size: s(12);
+    letter-spacing: 0.065em;
+    line-height: 122%;
+    color: var(--white);
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.8) 100%
+      ),
+      lightgray -8.535px 0px / 146.52% 100% no-repeat;
+    @include transitions((opacity, visibility));
+    & > span {
+      position: relative;
+      top: s(12);
+      left: s(1);
+      letter-spacing: -0.1em;
+    }
+  }
+  &:hover,
+  &:active {
+    & > p {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  @include mobile {
+    height: s-md(150);
+  }
+}

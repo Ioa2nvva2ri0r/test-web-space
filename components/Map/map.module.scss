@@ -1,0 +1,15 @@
+@import "../../app/assets/styles/mixin";
+
+.map {
+  @include block(100%);
+  &__container {
+    position: relative;
+    overflow: hidden;
+    @include block(100%, s(544));
+  }
+  @include mobile {
+    &__container {
+      height: s-md(500);
+    }
+  }
+}

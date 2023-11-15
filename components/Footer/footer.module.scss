@@ -1,0 +1,39 @@
+@import "../../app/assets/styles/mixin";
+
+.footer {
+  padding: s(59) s(315) s(108);
+  background-color: var(--black);
+  @include mobile {
+    padding-left: s-md(20);
+    padding-right: s-md(20);
+  }
+}
+
+.list {
+  display: flex;
+  gap: s(168);
+}
+
+.item {
+  color: var(--white);
+  & > h3 {
+    margin-bottom: s(23);
+    font-size: s(17);
+    font-weight: 400;
+    line-height: 140%;
+  }
+  & > strong,
+  & > a {
+    padding-left: s(30);
+    font-size: s(21);
+    font-weight: 500;
+  }
+  & > a {
+    @include transition(color);
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--grey-dark);
+    }
+  }
+}

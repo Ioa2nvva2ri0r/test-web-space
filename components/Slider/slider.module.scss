@@ -1,0 +1,102 @@
+@import "../../app/assets/styles/mixin";
+
+$margin: 10;
+
+.slider {
+  width: 100%;
+  max-width: s(820);
+  height: calc(s(372) + s($margin) * 2);
+  margin: 0 s(-$margin) 0 0 !important;
+  padding: s($margin) !important;
+  &__container {
+    @include flex-50-50;
+    gap: s(40);
+    padding-top: s(91);
+  }
+  &__pagination {
+    display: flex;
+    flex-direction: column;
+    gap: s(15);
+    transform: none !important;
+    & span {
+      opacity: 1;
+      @include block(s(20));
+      margin: 0 !important;
+      @include transition(background-color, var(--grey-light));
+      &[aria-current="true"] {
+        background-color: var(--black) !important;
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: var(--grey-dark);
+      }
+    }
+  }
+  @include mobile {
+    &__container {
+      align-items: center;
+      flex-direction: column;
+      padding: s-md(45) s-md(10) 0;
+      gap: s-md(15);
+    }
+    &__pagination {
+      width: auto !important;
+      flex-direction: row;
+      gap: s-md(12);
+    }
+  }
+}
+
+.slide {
+  padding: s(58) s(60) s(90) s(280);
+  background-color: var(--white);
+  box-shadow: 0 s(4) s(4) s(4) rgba(0, 0, 0, 0.25);
+  &__title {
+    position: absolute;
+    top: s(13);
+    left: s(33);
+    display: flex;
+    flex-direction: column;
+    & * {
+      font-weight: 900;
+      color: var(--grey-dark);
+    }
+    & > span {
+      position: relative;
+      &:first-child {
+        font-size: s(250);
+      }
+      &:last-child {
+        top: s(-30);
+        font-size: s(128);
+      }
+    }
+  }
+  &__desc {
+    display: inline-flex;
+    flex-direction: column;
+    & * {
+      font-weight: 500;
+    }
+    & > strong {
+      margin-bottom: s(35);
+      font-size: s(26);
+    }
+    & > span {
+      font-size: s(17);
+    }
+  }
+  @include mobile {
+    &__title {
+      & > span {
+        &:first-child {
+          font-size: s-md(120);
+        }
+        &:last-child {
+          font-size: s-md(50);
+        }
+      }
+    }
+  }
+}

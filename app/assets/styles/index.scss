@@ -1,0 +1,71 @@
+//                                                            Подключение mixins
+@import "mixin";
+//                                                            Подключение основных переменных
+@import "static/variables";
+
+*,
+html,
+body {
+  font-weight: 400; // жирность шрифта по умолчанию
+  font-style: normal;
+  line-height: 1;
+}
+
+html,
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+html {
+  font-size: 0.5208335vw; // на ширине экрана 1920px (0.5208335vw === 10px)
+  @include mobile {
+    font-size: 5px;
+    font-size: 1.5625vw;
+    font-size: calc(100 / 375) * 5vw; // где 375 - это ширина мобильной версии в px
+    -webkit-text-size-adjust: none;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  font-size: s(16); // размер шрифта по умолчанию (16px)
+  color: var(--black); // цвет текста по умолчанию
+  background-color: var(--white); // заливка по умолчанию
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include mobile {
+    font-size: s-md(12); // размер шрифта по умолчанию (16px)
+    -webkit-text-size-adjust: none;
+  }
+}
+
+//                                                            Подключение сброса стандартных стилей
+@import "static/reset";
+
+.container {
+  width: s(1600);
+  margin: 0 auto;
+
+  @include mobile {
+    width: 100%;
+    padding: 0 s-md(20);
+  }
+}
+
+.desktop {
+  @include mobile {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none;
+  @include mobile {
+    display: initial;
+  }
+}
+
+[class*="ymaps-2"][class*="-ground-pane"] {
+  filter: brightness(0.6);
+}

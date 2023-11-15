@@ -1,0 +1,38 @@
+// Заливка текста
+@mixin text-bg($color-1, $color-2) {
+  background: linear-gradient(180deg, $color-1 0%, $color-2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+// Многоточие в конце строки
+@mixin text-ellipsis($line: none) {
+  @if $line != none {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+  } @else {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  overflow: hidden;
+}
+
+// Бегущая строка
+@mixin ticker($attr, $delay: 15s) {
+  white-space: nowrap;
+  animation: ticker $delay infinite linear;
+  &::after {
+    content: '\20'attr($attr);
+  }
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
